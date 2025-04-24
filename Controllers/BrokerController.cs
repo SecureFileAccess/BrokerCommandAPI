@@ -36,8 +36,7 @@ public class BrokerController : ControllerBase
 
         var response = await client.ForwardToClientAsync(grpcRequest);
 
-        var data = ((FileResponse)response.Response).Content.ToByteArray();
-
+        var data = ((FileResponse)response.Response).Content.ToStringUtf8();
         return Ok(new
         {
             response.ClientId,
